@@ -1,0 +1,115 @@
+:root {
+    /*Background Color*/
+    --ivory: #FFFFF0;
+    /*Secondary Background Color*/
+    --offwhite: #F9F9F9;
+    /*Buttons & Links*/
+    --burgandy: #800020;
+    /*Headings, Subheadings, Titles*/
+    --gold: #FFD700;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: var(--offwhite);
+}
+
+/*Index*/
+#hero-arrow-down {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#summerFavoritesCarousel .card {
+    min-height: 70vh;
+}
+
+/*Bootstrap Overwrites*/
+.navbar-light {
+    background-color: var(--ivory) !important;
+}
+
+.navbar-brand {
+    color: var(--burgandy) !important;
+}
+
+.btn-primary {
+    background-color: var(--burgandy) !important;
+}
+
+.btn-primary:hover {
+    text-decoration: underline 2px solid var(--gold);
+}
+
+a:hover, .nav-item:hover {
+    color: var(--gold) !important;
+}
+
+.highlight-gold {
+    color: var(--gold);
+}
+
+.truncate-text-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Number of lines to display */
+    -webkit-box-orient: vertical;
+}
+
+.bg-primary {
+    color: var(--burgandy) !important;
+}
+
+/*Animations*/
+@keyframes floating {
+    0% {
+        bottom: 10%;
+    }
+    50% {
+        bottom: 12.5%;
+    }
+    100% {
+        bottom: 10%;
+    }
+}
+
+.floating {
+    animation: floating 2s infinite;
+}
+
+/*Carousel*/
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(25%);
+    }
+
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+    transform: translateX(0);
+}
