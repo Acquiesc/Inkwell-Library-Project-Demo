@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.standard')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -61,8 +61,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="row d-flex justify-content-center mb-0">
+                            <div class="col-md-6 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

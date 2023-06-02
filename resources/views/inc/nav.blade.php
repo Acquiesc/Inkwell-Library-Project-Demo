@@ -7,21 +7,44 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="/catalog">Catalog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="/events">Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="/about">About</a>
           </li>
         </ul>
         <div class="d-flex gap-3 text-center align-items-center text-white">
-            <a href="/login" class="m-0">Login</a>
-            <a href="/register" class="m-0">Register</a>
+          @guest
+          @if (Route::has('login'))
+                  <a class="" href="{{ route('login') }}">{{ __('Login') }}</a>
+          @endif
+
+          @if (Route::has('register'))
+              <a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
+          @endif
+          @else
+          <a href="/profile">
+              Profile
+          </a>
+
+          <div class="">
+              <a class="" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                  Logout
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+          </div>
+          @endguest
         </div>
       </div>
     </div>

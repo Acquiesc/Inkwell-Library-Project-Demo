@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.standard')
 
 @section('content')
-<div class="container">
+
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -39,7 +40,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -51,12 +52,16 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="row d-flex justify-content-center mb-0">
+                            <div class="col-md-8 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                            </div>
+                        </div>
 
+                        <div class="row d-flex justify-content-center mb-0">
+                            <div class="col-md-8 text-center">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}

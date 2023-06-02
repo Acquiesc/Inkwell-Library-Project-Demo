@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index')->with('success', 'Please note that this website was developed
+    by Adam Lee as a demonstration project.  Inkwell Libraries in no way represents a
+    real business');
 });
 
 //enable auth routes

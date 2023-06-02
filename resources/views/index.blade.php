@@ -7,124 +7,121 @@
     <h1 class="pt-5 fw-bold display-1" style="color:var(--burgandy);">Inkwell Library</h1>
     <h3><strong>Where knowledge, education, and entertainment know no bounds</strong></h3>
     <br>
-    <a href="/member/sign-up" class="btn bg-image btn-primary">Become a Member Today</a>
+    <a href="#membership-details" class="btn bg-image btn-primary">Become a Member Today</a>
 
     <img src="/images/hero-books.png" alt="" class="position-absolute bottom-0 start-0 h-50 w-100">
     <a href="#summerFavorites"><i id="hero-arrow-down" class="bi bi-arrow-down fw-bold display-1 floating"></i></a>
 </section>
 
 <!--Summer Favorites-->
-<section id="summerFavorites" class="container-fluid text-center p-5">
-    <h1 class="fw-bold display-1 mt-5">Summer Favorites</h1>
+<section id="summerFavorites" class="container-fluid text-center" style="padding: 0;">
+    <div class="row">
+        <h1 class="fw-bold display-1 mt-5">Summer Favorites</h1>
+    </div>
 
-    <!--Multiple Item Carousel-->
-    <div class="container-fluid text-center my-5">
-		<div class="row mx-auto my-auto justify-content-center">
-			<div id="summerFavoritesCarousel" class="carousel slide" data-bs-ride="carousel">
-				<div class="carousel-inner" role="listbox">
-					<div class="carousel-item active">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/CB997E/333333?text=1" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 1</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/DDBEA9/333333?text=2" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 2</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/FFE8D6/333333?text=3" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 3</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/B7B7A4/333333?text=4" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 4</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/A5A58D/333333?text=5" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 5</div>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-3">
-							<div class="card">
-								<div class="card-img">
-									<img src="https://via.placeholder.com/700x500.png/6B705C/eeeeee?text=6" class="img-fluid">
-								</div>
-								<div class="card-img-overlay">Slide 6</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev bg-transparent w-aut" href="#summerFavoritesCarousel" role="button" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				</a>
-				<a class="carousel-control-next bg-transparent w-aut" href="#summerFavoritesCarousel" role="button" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				</a>
-			</div>
-		</div>		
-	</div>
+    <div class="row my-5 d-flex flex-nowrap gap-5 py-5" style="overflow-x: scroll;">
+        <div class="col ms-5">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/the-catcher-in-the-rye.jpeg" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">The Catcher in the Rye</h5>
+                    <p class="card-text">J.D. Salinger</p>
+                    <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/to-the-lighthouse.jpg" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">To the Lighthouse</h5>
+                    <p class="card-text">Virginia Woolf</p>
+                    <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/moby-dick.jpg" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Moby-Dick</h5>
+                  <p class="card-text">Herman Melville</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/the-lord-of-the-rings.jpg" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">The Lord of the Rings</h5>
+                  <p class="card-text">J.R.R. Tolkien</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Brave New World</h5>
+                  <p class="card-text">Aldous Huxley</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Brave New World</h5>
+                  <p class="card-text">Aldous Huxley</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Brave New World</h5>
+                  <p class="card-text">Aldous Huxley</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card me-5" style="width: 18rem;">
+                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Brave New World</h5>
+                  <p class="card-text">Aldous Huxley</p>
+                  <a href="/catalog" class="btn btn-primary">View Book</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!--Multiple Item Carousel Script-->
-    <script>
-        let items = document.querySelectorAll('.carousel .carousel-item')
-
-        items.forEach((el) => {
-            const minPerSlide = 4
-            let next = el.nextElementSibling
-            for (var i=1; i<minPerSlide; i++) {
-                if (!next) {
-            // wrap carousel by using first child
-            next = items[0]
-        }
-        let cloneChild = next.cloneNode(true)
-        el.appendChild(cloneChild.children[0])
-        next = next.nextElementSibling
-        }
-        })
-    </script>
-
+    <div class="row text-center">
+        <div class="col">
+            <a href="/catalog" class="btn btn-primary">Browse Our Full Catalog</a>
+        </div>
+    </div>
 </section>
 
 
 
 <!--Events-->
-<section class="container-fluid text-center p-5">
-    <h1 class="fw-bold display-1 mt-5">Upcoming Events</h1>
+<section class="container-fluid text-center my-5 d-flex flex-column bg-secondary justify-content-center" style="padding: 0;">
+    <div class="row">
+        <h1 class="fw-bold display-1 mt-5">Upcoming Events</h1>
+    </div>
 
     <!--Event Cards-->
-    <div class="row my-5 d-flex justify-content-evenly">
+    <div class="row mt-5 mx-auto gap-5 d-flex justify-content-center" style="max-width: 75rem">
         <div class="col d-flex justify-content-center mb-3">
             <div class="card h-100" style="width: 18rem;">
-                <img src="/images/surreal-book.webp" class="card-img-top" alt="...">
+                <img src="/images/mystery-event.jpg" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="mb-5">
                         <h5 class="card-title"><strong>Unveiling the Enigma: An Evening with Renowned Mystery Authors</strong></h5>
@@ -138,11 +135,11 @@
                     </div>
                   <a href="#" class="btn btn-primary">View Event Details</a>
                 </div>
-              </div>
+            </div>
         </div>
         <div class="col d-flex justify-content-center mb-3">
             <div class="card h-100" style="width: 18rem;">
-                <img src="/images/surreal-book.webp" class="card-img-top" alt="...">
+                <img src="/images/creative-writing-event.jpg" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="mb-5">
                         <h5 class="card-title"><strong>Ignite Your Creativity: A Workshop on the Art of Creative Writing</strong></h5>
@@ -156,7 +153,7 @@
         </div>
         <div class="col d-flex justify-content-center mb-3">
             <div class="card h-100" style="width: 18rem;">
-                <img src="/images/surreal-book.webp" class="card-img-top" alt="...">
+                <img src="/images/book-club-event.jpg" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="mb-5">
                         <h5 class="card-title"><strong>Literary Voyage: Book Club Meeting for Bookworms</strong></h5>
@@ -184,24 +181,62 @@
         <div class="col-11 col-lg-6 d-flex justify-content-center mb-3">
             <img src="/images/surreal-book.webp" alt="" class="w-75 ">
         </div>
-        <div class="col-11 col-lg-6">
-            <h1>Dive into Adventure: Join our Summer Reading Program!</h1>
-            <p>Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
+        <div class="col-11 col-lg-6 text-white bg-dark p-3">
+            <h2 class="text-center mb-3">Dive into Adventure: Join our Summer Reading Program!</h2>
+            <p class="truncate-text-4">Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
+            <div class="text-center">
+                <button class="btn btn-primary">Learn More</button>
+            </div>
         </div>
     </div>
 </section>
 
 <!--Desktop-->
-<section class="container-fluid d-none d-lg-block" style="padding: 0;">
-    <div class="row d-flex justify-content-center">
-        <div class="col-11 d-flex justify-content-center mb-3">
-            <img src="/images/surreal-book.webp" alt="" class="w-100 ">
+<section class="container-fluid d-none d-lg-flex justify-content-center my-5 py-5" style="height: 75vh; padding:0;">
+    <div class="row position-relative w-100" style="padding: 0; max-width: 1150px;">
+        <div class="position-absolute mask border border-dark text-white w-50 h-auto p-3 top-0 end-0 rounded" style="z-index: 5; background-color: rgba(7,7,7,.8)">
+            <h2 class="text-center mb-3">Dive into Adventure: Join our Summer Reading Program!</h2>
+            <p class="truncate-text-4">Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
+            <div class="text-center">
+                <button class="btn btn-primary">Learn More</button>
+            </div>
         </div>
-        <div class="col-11">
-            <h1>Dive into Adventure: Join our Summer Reading Program!</h1>
-            <p>Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
+        <div class="position-absolute bg-success w-75 h-75 bottom-0 start-0" style="padding:0;">
+            <img src="/images/surreal-book.webp" alt="" class="w-100 h-100 rounded">
         </div>
     </div>
 </section>
+
+<!--Membership Section-->
+<section id="membership-details" class="container-fluid my-5 py-5">
+    <div class="row d-flex flex-column-reverse flex-lg-row justify-content-center gap-5">
+        <div class="col-12 col-lg-5 d-flex flex-column p-3 py-5 text-white rounded" style="background-color: var(--burgandy);">
+            <div class="my-auto">
+                <h1 class="highlight-gold text-center">Unlock a World of Knowledge: Join our Library Membership</h1>
+                <p class="text-center">Sign up today to gain direct access to all of our <strong><u>free</u></strong> resources</p>
+                <ul class="mx-auto" style="width: fit-content;">
+                    <li class="list-item">Vast Collection of Books</li>
+                    <li class="list-item">Exciting Events and Workshops</li>
+                    <li class="list-item">Fully Online Ordering</li>
+                    <li class="list-item">Summer Reading Program</li>
+                    <li class="list-item">Knowledgeable Librarians</li>
+                </ul>
+                <div class="text-center">
+                    <a href="/register" class="btn btn-secondary">Sign Up Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center">
+            <img src="/images/reading-textbook.jpg" alt="" class="w-100 rounded">
+        </div>
+    </div>
+</section>
+
+<!--TODO: About Section-->
+<section>
+
+</section>
+
+
 
 @endsection
