@@ -233,8 +233,35 @@
 </section>
 
 <!--TODO: About Section-->
-<section>
-
+<section id="about-inkwell-library" class="container-fluid bg-secondary p-5 border-top border-dark">
+    <div class="row justify-content-evenly gap-3 text-center">
+      <div class="col-12 col-md-3 py-3 bg-light">
+        <i class="bi bi-geo-alt-fill" style="font-size: 4rem;"></i>
+        <h3 class = ""><u>Visit Us</u></h3>
+        <p>1234 Fulton St. Grand Rapids, MI 49501</p>
+      </div>
+      <div class="col-12 col-md-3 py-3 bg-light">
+        <i class="bi bi-clock-fill" style="font-size: 4rem;"></i>
+        <h3 class = ""><u>Store Hours</u></h3>
+        <div class="col text-nowrap">
+          <p>Sunday: 8am - 3pm</p>
+          <p>Monday: 8am - 8pm</p>
+          <p>Tuesday: 8am - 8pm</p>
+          <p>Wednesday: 8am - 8pm</p>
+          <p>Thursday: 8am - 8pm</p>
+          <p>Friday: 8am - 10pm</p>
+          <p>Saturday: 8am - 10pm</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-3 py-3 text-nowrap bg-light">
+        <i class="bi bi-telephone-fill" style="font-size: 4rem;"></i>
+        <h3 class = ""><u>Contact Us</u></h3>
+        <p>Phone: (616) 123-4567</p>
+        <div class="text-center">
+          <a class="btn btn-outline-dark btn-md" href="/contact" role="button">Send Us a Message</a>
+        </div>
+      </div>
+    </div>
 </section>
 
 

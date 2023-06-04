@@ -40,7 +40,30 @@
     <main class="">
         @include('inc.messages')
         
-        @yield('content')
+        <div class="container-fluid" style="padding: 0; height: calc(100vh - 40px - 193px)">
+            <div class="row h-100 w-100">
+                <!--Make profile nav toggle-able on small resolutions-->
+                <div class = "d-flex d-lg-none">
+                    <nav class="col6 col-lg-2 border py-5 px-3 text-center bg-dark text-white" style="border-color: rgb(83, 83, 83) !important;">
+                        @include('inc.profile.nav')
+                    </nav>
+                    <div class="col-4 col-lg-10">
+                        <h1>Small</h1>
+                        @yield('content')
+                    </div>
+                </div>
+                <!--Display profile nav on larger resolutions-->
+                <div class = "d-none d-lg-flex">
+                    <nav class="col-2 border py-5 px-3 text-center bg-dark text-white" style="border-color: rgb(83, 83, 83) !important;">
+                        @include('inc.profile.nav')
+                    </nav>
+                    <div class="col-10">
+                        <h1>Large</h1>
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     @include('inc.footer')
