@@ -12,6 +12,16 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function carts()
+    {
+        return $this->hasMany('App\Models\Cart', 'User_ID');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +30,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'pin',
         'password',
     ];
 

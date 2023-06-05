@@ -20,6 +20,8 @@
           </li>
         </ul>
         <div class="d-flex gap-3 text-center align-items-center text-white justify-content-center">
+          <a href="/profile/cart"><i class="fs-4 bi bi-cart4"></i></a>
+          
           @if(Auth::check())
             @if(Auth::user()->admin == 1)
               <a class="" href="/admin/home">Admin</a>

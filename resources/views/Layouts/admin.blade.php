@@ -41,11 +41,11 @@
         @include('inc.messages')
         
         <div class="container-fluid" style="padding: 0; min-height: calc(100vh - 40px)">
-            <div class="row flex-nowrap">
+            <div class="row flex-nowrap h-100" style="min-height: calc(100vh - 40px)">
                 <nav class="col-auto bg-dark text-white border" style="border-color: #FFFFFF;">
-                    @include('inc.profile.nav')
+                    @include('inc.admin.nav')
                 </nav>
-                <div class="col p-3 h-auto">
+                <div class="col p-3">
                     @yield('content')
                 </div>
             </div>

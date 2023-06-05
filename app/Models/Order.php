@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'books';
+    protected $table = 'carts';
 
     public $primarykey = 'id';
 
     public $timestamps = true;
 
-    public function carts()
+    public function user()
     {
-        return $this->hasMany('App\Models\Cart', 'Book_ID');
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function orders()
+    public function book()
     {
-        return $this->hasMany('App\Models\Order');
+        return $this->belongsTo('App\Models\Book');
     }
 }

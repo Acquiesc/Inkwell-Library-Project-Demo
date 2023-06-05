@@ -20,86 +20,18 @@
     </div>
 
     <div class="row my-5 d-flex flex-nowrap gap-5 py-5" style="overflow-x: scroll;">
+        @foreach($favorite_books as $favorite_book)
         <div class="col ms-5">
             <div class="card" style="width: 18rem;">
-                <img src="/images/books/the-catcher-in-the-rye.jpeg" height="393" width="292" class="card-img-top" alt="...">
+                <img src="/images/books/{{$favorite_book->book_img}}" height="393" width="292" class="card-img-top" alt="...">
                 <div class="card-body text-center">
-                    <h5 class="card-title">The Catcher in the Rye</h5>
-                    <p class="card-text">J.D. Salinger</p>
+                    <h5 class="card-title">{{$favorite_book->title}}</h5>
+                    <p class="card-text">{{$favorite_book->author}}</p>
                     <a href="/catalog" class="btn btn-primary">View Book</a>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/to-the-lighthouse.jpg" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">To the Lighthouse</h5>
-                    <p class="card-text">Virginia Woolf</p>
-                    <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/moby-dick.jpg" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Moby-Dick</h5>
-                  <p class="card-text">Herman Melville</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/the-lord-of-the-rings.jpg" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">The Lord of the Rings</h5>
-                  <p class="card-text">J.R.R. Tolkien</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Brave New World</h5>
-                  <p class="card-text">Aldous Huxley</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Brave New World</h5>
-                  <p class="card-text">Aldous Huxley</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Brave New World</h5>
-                  <p class="card-text">Aldous Huxley</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card me-5" style="width: 18rem;">
-                <img src="/images/books/brave-new-world.png" height="393" width="292" class="card-img-top" alt="...">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Brave New World</h5>
-                  <p class="card-text">Aldous Huxley</p>
-                  <a href="/catalog" class="btn btn-primary">View Book</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="row text-center">
@@ -257,9 +189,6 @@
         <i class="bi bi-telephone-fill" style="font-size: 4rem;"></i>
         <h3 class = ""><u>Contact Us</u></h3>
         <p>Phone: (616) 123-4567</p>
-        <div class="text-center">
-          <a class="btn btn-outline-dark btn-md" href="/contact" role="button">Send Us a Message</a>
-        </div>
       </div>
     </div>
 </section>
