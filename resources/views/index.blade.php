@@ -153,9 +153,15 @@
                     <li class="list-item">Summer Reading Program</li>
                     <li class="list-item">Knowledgeable Librarians</li>
                 </ul>
+                @if(!Auth::user())
                 <div class="text-center">
                     <a href="/register" class="btn btn-secondary">Sign Up Now</a>
                 </div>
+                @else
+                <div class="text-center">
+                    <a href="/profile/home" class="btn btn-secondary">View Profile</a>
+                </div>
+                @endif
             </div>
         </div>
         <div class="col-12 col-lg-5 d-flex align-items-center justify-content-center">

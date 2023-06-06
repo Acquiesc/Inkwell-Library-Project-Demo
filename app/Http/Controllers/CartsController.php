@@ -46,7 +46,7 @@ class CartsController extends Controller
 
         $existing_cart = Cart::where('User_ID', $user_id)
                         ->where('Book_ID', $book_id)
-                        ->first();;
+                        ->first();
 
         if($existing_cart) {
             return back()->with('error', 'This item is already in your cart');

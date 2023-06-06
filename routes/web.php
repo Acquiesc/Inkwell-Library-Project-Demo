@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\OrdersController;
+
+use Carbon\Carbon;
+
 use App\Models\Book;
 use App\Models\User;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +36,33 @@ Route::get('/home', function() {
 Route::get('/catalog', 'App\Http\Controllers\BooksController@index');
 Route::get('/catalog/view/{id}', 'App\Http\Controllers\BooksController@show');
 
+Route::get('/events', function() {
+    return view('events');
+});
+
 Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', function() {
+        $orders = Order::all();
+
+        foreach ($orders as $order) {
+            $order->calculateDaysOverdue();
+        }
+
         return view('profile.home');
     });
     Route::get('/orders', function() {
-        return view('profile.orders');
+        $current_orders = Order::where('User_ID', Auth::user()->id)->where('is_active', 1)->get();
+
+        foreach ($current_orders as $order) {
+            $order->calculateDaysOverdue();
+        }
+
+        return view('profile.orders')->with('current_orders', $current_orders);
     });
     Route::get('/order-history', function() {
-        return view('profile.order-history');
+        $orders = Order::where('User_ID', Auth::user()->id)->where('is_active', 0)->get();
+
+        return view('profile.order-history')->with('orders', $orders);
     });
     Route::get('/fees', function() {
         return view('profile.fees');
@@ -53,11 +76,24 @@ Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
 
 Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/home', function() {
+        $orders = Order::all();
+
+        foreach ($orders as $order) {
+            $order->calculateDaysOverdue();
+        }
+
         return view('admin.home');
     });
-    Route::get('/orders', function() {
-        return view('admin.orders');
+    Route::get('/orders', function() {        
+        $current_orders = Order::all();
+
+        foreach ($current_orders as $order) {
+            $order->calculateDaysOverdue();
+        }
+
+        return view('admin.orders')->with('current_orders', $current_orders);
     });
+    Route::delete('/orders/check-in', 'App\Http\Controllers\OrdersController@destroy');
     Route::get('/catalog', function() {
         $books = Book::all();
 
@@ -76,4 +112,3 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
 
 //enable auth routes
 Auth::routes();
-

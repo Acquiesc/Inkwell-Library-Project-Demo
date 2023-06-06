@@ -9,11 +9,26 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'carts';
+    protected $table = 'orders';
 
     public $primarykey = 'id';
 
     public $timestamps = true;
+
+    public function calculateDaysOverdue()
+    {
+        $dueDate = $this->due_date;
+        $currentDate = now()->startOfDay();
+
+        if ($currentDate->isAfter($dueDate)) {
+            $daysOverdue = $currentDate->diffInDays($dueDate);
+            $this->days_overdue = $daysOverdue;
+        } else {
+            $this->days_overdue = 0; // Set to 0 if not overdue
+        }
+
+        $this->save();
+    }
 
     public function user()
     {
