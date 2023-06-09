@@ -31,7 +31,7 @@ class Order extends Model
                 $this->total_fees_accrued = 0.00;
             }
 
-            $this->total_fees_due = $this->total_fees_accrued - $this->total_fees_paid;
+            $this->total_fees_due = number_format(($this->total_fees_accrued - $this->total_fees_paid), 2);
 
             $this->save();
         }

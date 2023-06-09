@@ -111,7 +111,23 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
 
         return view('admin.orders')->with('current_orders', $current_orders);
     });
+    Route::get('/orders/history', function() {
+        $orders = Order::where('is_active', 0)->get();
+
+        foreach ($orders as $order) {
+            $order->calculateFees();
+        }
+        
+        return view('admin.orders-history')->with('orders', $orders);
+    });
     Route::put('/orders/check-in/{id}', 'App\Http\Controllers\OrdersController@update');
+
+    Route::get('/fees/manage/{id}', function($id) {
+        $order = Order::find($id);
+
+        return view('admin.collect-fee')->with('order', $order);
+    });
+
     Route::get('/catalog', function() {
         $books = Book::all();
 

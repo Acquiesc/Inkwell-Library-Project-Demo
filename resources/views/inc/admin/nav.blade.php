@@ -21,12 +21,14 @@
                 <i class="fs-4 bi-journal-arrow-up"></i> <span class="ms-1 d-none d-sm-inline">New Book</span></a>
         </li>
         <li class = "mb-3">
-            <a href="/admin/orders" class="px-0 align-middle text-white">
+            <a href="/admin/orders/history" class="px-0 align-middle text-white">
                 <i class="fs-4 bi bi-box-seam"></i> <span class="ms-1 d-none d-sm-inline">Manage Orders</span></a>
         </li>
+        <!--
         <li class = "mb-3">
             <a href="/admin/fees" class="px-0 align-middle text-white">
                 <i class="fs-4 bi-cash-coin"></i> <span class="ms-1 d-none d-sm-inline">Manage Fees</span></a>
         </li>
+         -->
     </ul>
 </div>

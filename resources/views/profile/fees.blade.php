@@ -72,9 +72,13 @@
                             <p class=""><strong>Amount Paid: </strong><span class="text-nowrap"><br>${{$payment->amount_paid}}</span></p>
                             <p class=""><strong>Paid On: </strong><span class="text-nowrap"><br>{{$payment->created_at}}</span></p>
                             <p class=""><strong>Card Ending: </strong><span class="text-nowrap"><br>{{$payment->card_number}}</span></p>
-                            <div class="text-center mt-4">
-                                <button class="btn btn-primary"><i class="bi bi-eye"></i></button>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fee-{{$payment->id}}-details">
+                                    <i class="fs-5 bi bi-eye"></i>
+                                </button>
                             </div>
+                
+                            @include('inc.profile.modals.payment-history')
                         </div>
                     </div>
                 </div>

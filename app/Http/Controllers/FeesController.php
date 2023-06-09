@@ -39,12 +39,16 @@ class FeesController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->is_admin)
+        if(Auth::user()->admin == 1)
         {
             $validator = Validator::make($request->all(), [ 
                 'order_id' => 'required',
-                'amount_paid' => 'required',
+                'amount_paid' => 'required'
             ]);
+
+            if($validator->fails()) {
+                return back()->with('errors', $validator->errors());
+            }
         } else {
             $validator = Validator::make($request->all(), [ 
                 'order_id' => 'required',
@@ -58,17 +62,17 @@ class FeesController extends Controller
                 'country' => 'required',
                 'zipcode' => 'required',
             ]);
-        }
 
-        if($validator->fails()) {
-            return back()->with('errors', $validator->errors());
+            if($validator->fails()) {
+                return back()->with('errors', $validator->errors());
+            }
         }
 
         $payment = new FeePaymentLog;
 
         $payment->order_id = $request->input('order_id');
         $payment->amount_paid = $request->input('amount_paid');
-        if(!Auth::user()->is_admin)
+        if(Auth::user()->admin == 0)
         {
             $payment->card_number = $request->input('card_number');
             $payment->cvv = $request->input('cvv');
@@ -87,7 +91,11 @@ class FeesController extends Controller
         $order->total_fees_due = $order->total_fees_accrued - $order->total_fees_paid;
         $order->save();
 
-        return redirect('/profile/fees')->with('success', 'Successfully made fee payment');
+        if(Auth::user()->admin) {
+            return redirect('/admin/orders')->with('success', 'Successfully made fee payment');
+        } else {
+            return redirect('/profile/fees')->with('success', 'Successfully made fee payment');
+        }
     }
 
     /**
