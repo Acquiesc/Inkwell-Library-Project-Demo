@@ -32,16 +32,16 @@
             <p class="w-100"><strong>Order ID: </strong><span class="text-nowrap">{{$current_order->id}}</span></p>
             <p class="w-100"><strong>Available for Pickup: </strong><span class="text-nowrap">{{$current_order->available_date}}</span></p>
             <p class="w-100"><strong>Due Date: </strong><span class="text-nowrap">{{$current_order->due_date}}</span></p>
-            <p class="w-100"><strong>Fees: </strong><span class="text-nowrap">${{number_format((0.25 * $current_order->days_overdue), 2)}}</span></p>
-            @if((0.25 * $current_order->days_overdue) == 0)
-            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@destroy', $current_order->id], 'files' => false, 'method' => 'POST', 'class' => 'my-auto']) !!}
-                {{Form::hidden('_method', 'DELETE')}}
-                {{ Form::submit('Check-In', ['class'=>'btn btn-success'])}}
+            <p class="w-100"><strong>Fees: </strong><span class="text-nowrap">${{$current_order->fees_due}}</span></p>
+            @if(($current_order->fees_due) > 0)
+            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@update', $current_order->id], 'files' => false, 'method' => 'POST', 'class' => 'my-auto']) !!}
+                @method('PUT')
+                {{ Form::submit('Pay Fees', ['class'=>'btn btn-danger'])}}
             {!! Form::close() !!}
             @else
-            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@destroy', $current_order->id], 'files' => false, 'method' => 'POST', 'class' => 'my-auto']) !!}
-                {{Form::hidden('_method', 'DELETE')}}
-                {{ Form::submit('Pay Fees', ['class'=>'btn btn-danger'])}}
+            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@update', $current_order->id], 'files' => false, 'method' => 'POST', 'class' => 'my-auto']) !!}
+                @method('PUT')
+                {{ Form::submit('Check-In', ['class'=>'btn btn-success'])}}
             {!! Form::close() !!}
             @endif
         </div>

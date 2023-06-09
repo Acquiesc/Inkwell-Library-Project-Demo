@@ -15,19 +15,26 @@ class Order extends Model
 
     public $timestamps = true;
 
-    public function calculateDaysOverdue()
+    public function calculateFees()
     {
-        $dueDate = $this->due_date;
-        $currentDate = now()->startOfDay();
+        if($this->checked_in_date == null) {
+            $dueDate = $this->due_date;
+            $currentDate = now()->startOfDay();
+    
+            if ($currentDate->isAfter($dueDate)) {
+                $daysOverdue = $currentDate->diffInDays($dueDate);
+                $total_fees_accrued = number_format(($daysOverdue * 0.25), 2);
+                $this->days_overdue = $daysOverdue;
+                $this->total_fees_accrued = $total_fees_accrued;
+            } else {
+                $this->days_overdue = 0;
+                $this->total_fees_accrued = 0.00;
+            }
 
-        if ($currentDate->isAfter($dueDate)) {
-            $daysOverdue = $currentDate->diffInDays($dueDate);
-            $this->days_overdue = $daysOverdue;
-        } else {
-            $this->days_overdue = 0; // Set to 0 if not overdue
+            $this->total_fees_due = $this->total_fees_accrued - $this->total_fees_paid;
+
+            $this->save();
         }
-
-        $this->save();
     }
 
     public function user()
@@ -38,5 +45,10 @@ class Order extends Model
     public function book()
     {
         return $this->belongsTo('App\Models\Book');
+    }
+
+    public function feePaymentLogs()
+    {
+        return $this->hasMany('App\Models\FeePaymentLog');
     }
 }

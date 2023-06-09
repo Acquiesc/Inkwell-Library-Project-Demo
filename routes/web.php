@@ -8,6 +8,7 @@ use App\Http\Controllers\OrdersController;
 use Carbon\Carbon;
 
 use App\Models\Book;
+use App\Models\FeePaymentLog;
 use App\Models\User;
 use App\Models\Order;
 
@@ -45,7 +46,7 @@ Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
         $orders = Order::all();
 
         foreach ($orders as $order) {
-            $order->calculateDaysOverdue();
+            $order->calculateFees();
         }
 
         return view('profile.home');
@@ -54,7 +55,7 @@ Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
         $current_orders = Order::where('User_ID', Auth::user()->id)->where('is_active', 1)->get();
 
         foreach ($current_orders as $order) {
-            $order->calculateDaysOverdue();
+            $order->calculateFees();
         }
 
         return view('profile.orders')->with('current_orders', $current_orders);
@@ -65,8 +66,25 @@ Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
         return view('profile.order-history')->with('orders', $orders);
     });
     Route::get('/fees', function() {
-        return view('profile.fees');
+        $active_orders = Order::where('user_id', Auth::user()->id)->where('total_fees_due', '>', 0)->where('is_active', 1)->get();
+
+        $payment_logs = Auth::user()->orders->flatMap(function ($order) {
+            return $order->feePaymentLogs;
+        });
+
+        foreach ($active_orders as $order) {
+            $order->calculateFees();
+        }
+
+        return view('profile.fees')->with(['active_orders' => $active_orders, 'payment_logs' => $payment_logs]);
     });
+    Route::get('/fees/pay/{id}', function($id) {
+        $order = Order::find($id);
+        
+        return view('profile.pay-fee')->with('order', $order);
+    });
+    Route::post('/fees/pay/validate', 'App\Http\Controllers\FeesController@store');
+
     Route::get('/cart', 'App\Http\Controllers\CartsController@index');
     Route::post('/cart/store', 'App\Http\Controllers\CartsController@store');
     Route::delete('/cart/remove/{id}', 'App\Http\Controllers\CartsController@destroy');
@@ -79,21 +97,21 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
         $orders = Order::all();
 
         foreach ($orders as $order) {
-            $order->calculateDaysOverdue();
+            $order->calculateFees();
         }
 
         return view('admin.home');
     });
     Route::get('/orders', function() {        
-        $current_orders = Order::all();
+        $current_orders = Order::where('is_active', 1)->get();
 
         foreach ($current_orders as $order) {
-            $order->calculateDaysOverdue();
+            $order->calculateFees();
         }
 
         return view('admin.orders')->with('current_orders', $current_orders);
     });
-    Route::delete('/orders/check-in', 'App\Http\Controllers\OrdersController@destroy');
+    Route::put('/orders/check-in/{id}', 'App\Http\Controllers\OrdersController@update');
     Route::get('/catalog', function() {
         $books = Book::all();
 

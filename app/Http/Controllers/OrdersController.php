@@ -42,7 +42,6 @@ class OrdersController extends Controller
         $user = Auth::user();
 
         $unavailable_book = false;
-        $unavailable_book_title = '';
 
         foreach($user->carts as $cart_item) {
             $available_books = $cart_item->book->total_quantity - $cart_item->book->total_currently_checked_out;
@@ -71,7 +70,7 @@ class OrdersController extends Controller
         }
 
         if($unavailable_book) {
-            return redirect('/profile/orders')->with('warning', 'Your order has been placed.  Unfortunately '. $book->title .' is currently unavailable and has been removed from your cart');
+            return redirect('/profile/orders')->with('warning', 'Your order has been placed.  Unfortunately some books are currently unavailable and has been removed from your cart');
         } else {
             return redirect('/profile/orders')->with('success', 'Your order has been placed');
         }
@@ -108,7 +107,12 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->checked_in_date = Carbon::now()->toDateTimeString();
+        $order->is_active = 0;
+        $order->save();
+
+        return back()->with('success', 'Checked in book successfully');
     }
 
     /**

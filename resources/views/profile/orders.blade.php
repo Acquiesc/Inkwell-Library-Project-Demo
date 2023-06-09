@@ -30,11 +30,14 @@
             <p class="w-100"><strong>Order ID: </strong><span class="text-nowrap">{{$current_order->id}}</span></p>
             <p class="w-100"><strong>Available for Pickup: </strong><span class="text-nowrap">{{$current_order->available_date}}</span></p>
             <p class="w-100"><strong>Due Date: </strong><span class="text-nowrap">{{$current_order->due_date}}</span></p>
-            <p class="w-100"><strong>Fees: </strong><span class="text-nowrap">${{number_format((0.25 * $current_order->days_overdue), 2)}}</span></p>
-            @if((0.25 * $current_order->days_overdue) > 0)
-            <a href="/profile/fees" class="btn btn-primary">Pay Fees</a>
-            @else
-
+            @if(($current_order->total_fees_accrued) > 0)
+            <p class="w-100"><strong class="text-danger">Days Overdue: </strong><span class="text-nowrap">{{$current_order->days_overdue}}</span></p>
+            <p class="w-100"><strong>Total Fees: </strong><span class="text-nowrap">${{$current_order->total_fees_accrued}}</span></p>
+            <p class="w-100"><strong>Fees Paid: </strong><span class="text-nowrap">${{$current_order->total_fees_paid}}</span></p>
+            <p class="w-100"><strong>Fees Due: </strong><span class="text-nowrap">${{$current_order->total_fees_due}}</span></p>
+            @if($current_order->total_fees_due > 0)
+            <a href="/profile/fees/pay/{{$current_order->id}}" class="btn btn-primary">Pay Fees</a>
+            @endif
             @endif
         </div>
     </div>
