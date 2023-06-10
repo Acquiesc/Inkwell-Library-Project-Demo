@@ -133,4 +133,4 @@ Explore the Inkwell Library demo project—a meticulously crafted web applicatio
 </ul>
 
 ## Database Design
-<img src="http://phplaravel-988638-3584494.cloudwaysapps.com/images/documentation/LibraryDBArchitecture.png"></img>
+<img id="database-design" src="http://phplaravel-988638-3584494.cloudwaysapps.com/images/documentation/LibraryDBArchitecture.png"></img>
