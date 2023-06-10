@@ -63,6 +63,10 @@ Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/order-history', function() {
         $orders = Order::where('User_ID', Auth::user()->id)->where('is_active', 0)->get();
 
+        foreach ($orders as $order) {
+            $order->calculateFees();
+        }
+
         return view('profile.order-history')->with('orders', $orders);
     });
     Route::get('/fees', function() {

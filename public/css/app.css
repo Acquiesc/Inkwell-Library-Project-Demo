@@ -33,6 +33,10 @@ body {
 }
 
 /*Bootstrap Overwrites*/
+.text-primary {
+    color: var(--burgandy) !important;
+}
+
 a:hover, .nav-item:hover {
     color: var(--gold) !important;
 }

@@ -101,7 +101,7 @@
 
     <div class="row my-5">
         <div class="col">
-            <a href="#" class="btn btn-primary">View Event Calendar</a>
+            <a href="#" class="btn btn-primary">View All Events</a>
         </div>
     </div>
 </section>
