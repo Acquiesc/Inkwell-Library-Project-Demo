@@ -14,7 +14,6 @@ class AddFeesDueColumnToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('days_overdue')->default(0)->after('due_date');
             $table->decimal('fees_due', 10, 2)->default(0.00)->after('days_overdue');
         });
     }
@@ -27,7 +26,6 @@ class AddFeesDueColumnToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('days_overdue');
             $table->dropColumn('fees_due');
         });
     }
