@@ -146,4 +146,31 @@ class BooksController extends Controller
     {
         //
     }
+
+    public function searchTitle(Request $request)
+    {
+        $title = $request->query('searchTerm');
+
+        $books = Book::where('title', 'like', $title . '%')->limit(10)->get();
+
+        return $books;
+    }
+
+    public function searchAuthor(Request $request)
+    {
+        $author = $request->query('searchTerm');
+
+        $books = Book::where('author', 'like', $author . '%')->limit(10)->get();
+
+        return $books;
+    }
+
+    public function searchISBN(Request $request)
+    {
+        $ISBN = $request->query('searchTerm');
+
+        $books = Book::where('ISBN', 'like', $ISBN . '%')->limit(10)->get();
+
+        return $books;
+    }
 }

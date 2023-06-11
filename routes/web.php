@@ -37,6 +37,10 @@ Route::get('/home', function() {
 Route::get('/catalog', 'App\Http\Controllers\BooksController@index');
 Route::get('/catalog/view/{id}', 'App\Http\Controllers\BooksController@show');
 
+Route::get('/catalog/search/title', 'App\Http\Controllers\BooksController@searchTitle');
+Route::get('/catalog/search/author', 'App\Http\Controllers\BooksController@searchAuthor');
+Route::get('/catalog/search/ISBN', 'App\Http\Controllers\BooksController@searchISBN');
+
 Route::get('/events', function() {
     return view('events');
 });
@@ -106,6 +110,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
 
         return view('admin.home');
     });
+
     Route::get('/orders', function() {        
         $current_orders = Order::where('is_active', 1)->get();
 
@@ -115,6 +120,19 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
 
         return view('admin.orders')->with('current_orders', $current_orders);
     });
+
+    Route::put('/orders/check-in/{id}', 'App\Http\Controllers\OrdersController@update');
+
+    Route::get('/users/search/pin', 'App\Http\Controllers\UsersController@searchPin');
+    Route::get('/users/search/name', 'App\Http\Controllers\UsersController@searchName');
+    Route::get('/users/search/email', 'App\Http\Controllers\UsersController@searchEmail');
+    Route::get('/users/search/get', 'App\Http\Controllers\UsersController@queryUser');
+    Route::get('/orders/search/id', 'App\Http\Controllers\OrdersController@searchID');
+
+    Route::get('/orders/user/{id}', 'App\Http\Controllers\UsersController@manageUser');
+
+
+
     Route::get('/orders/history', function() {
         $orders = Order::where('is_active', 0)->get();
 
@@ -124,7 +142,6 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
         
         return view('admin.orders-history')->with('orders', $orders);
     });
-    Route::put('/orders/check-in/{id}', 'App\Http\Controllers\OrdersController@update');
 
     Route::get('/fees/manage/{id}', function($id) {
         $order = Order::find($id);
@@ -143,9 +160,7 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
         return view('admin.create-book');
     });
     Route::post('/catalog/new/store', 'App\Http\Controllers\BooksController@store');
-    Route::get('/fees', function() {
-        return view('admin.fees');
-    });
+
 });
 
 //enable auth routes

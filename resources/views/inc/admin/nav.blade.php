@@ -24,6 +24,10 @@
             <a href="/admin/orders/history" class="px-0 align-middle text-white">
                 <i class="fs-4 bi bi-box-seam"></i> <span class="ms-1 d-none d-sm-inline">Manage Orders</span></a>
         </li>
+        <li class = "mb-3">
+            <a href="/admin/orders/events" class="px-0 align-middle text-white">
+                <i class="fs-4 bi bi-calendar-event"></i> <span class="ms-1 d-none d-sm-inline">Manage Events</span></a>
+        </li>
         <!--
         <li class = "mb-3">
             <a href="/admin/fees" class="px-0 align-middle text-white">

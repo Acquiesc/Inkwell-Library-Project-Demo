@@ -2,58 +2,140 @@
 
 @section('content')
 
-<div class="container-fluid">
-    <div class="row d-flex justify-content-center mb-5">
+<div class="container">
+    <div class="row mt-5 mb-3">
         <div class="col text-center">
-            <h1>Current Orders</h1>
+            <h1 class="fw-bold">Check-In</h1>
         </div>
     </div>
-    @if(count($current_orders) > 0)
-    @foreach($current_orders as $current_order)
-    <div class="row border border-dark p-3 mb-5" style="background-color: var(--ivory);">
-        <div class="col-12 col-lg-3 mb-3 d-flex flex-column text-start align-items-center">
-            <img src="/images/books/{{$current_order->book->book_img}}" width="150" alt="" class="m-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 mb-3">
+            <h3 class="text-center">Search By User</h3>
+            <label for="pin_search" class="form-label">Search by Pin</label>
+            <input class="form-control" id="pin_search" name="pin_search" placeholder="Search by pin...">
+            <select id="userPinSearchDropdown" class="form-select userQuery" size="5" style="display: none; overflow-x: scroll;">
+            
+            </select>
         </div>
-        <div class="col-12 col-md-4 col-lg-2 d-flex flex-column text-start align-items-center">
-            <p class="w-100"><strong>Title:</strong><br> {{$current_order->book->title}}</p>
-            <p class="w-100"><strong>Author:</strong><br> {{$current_order->book->author}}</p>
-            <p class="w-100"><strong>ISBN:</strong><br> {{$current_order->book->ISBN}}</p>
+
+        <div class="col-12 mb-3">
+            <label for="name_search" class="form-label">Search by Name</label>
+            <input class="form-control" id="name_search" name="name_search" placeholder="Search by name...">
+            <select id="userNameSearchDropdown" class="form-select userQuery" size="5" style="display: none;">
+            
+            </select>
         </div>
-        <div class="col-12 col-md-4 col-lg-2 d-flex flex-column text-start align-items-center">
-            <p class="w-100"><strong>Publisher: </strong><br> {{$current_order->book->publisher}}</p>
-            <p class="w-100"><strong>Published Date: </strong><br> {{$current_order->book->published_date}}</p>
+
+        <div class="col-12 mb-5">
+            <label for="email_search" class="form-label">Search by Email</label>
+            <input class="form-control" id="email_search" name="email_search" placeholder="Search by email...">
+            <select id="userEmailSearchDropdown" class="form-select userQuery" size="5" style="display: none;">
+            
+            </select>
         </div>
-        <div class="col-12 col-md-4 col-lg-3 d-flex flex-column text-start border-start border-dark align-items-center">
-            <p class="text-center"><strong>Customer: </strong></p>
-            <p class="w-100"><strong>Name: </strong><br> {{$current_order->user->name}}</p>
-            <p class="w-100 text-break"><strong>Email: </strong><br> {{$current_order->user->email}}</p>
+
+        <div class="col-12 mb-3 text-center" id="selectedUser" style="display: none;">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col">
+                        <h4>Selected User</h4>
+                        <p><strong>Name: </strong><span id="selectedName"></span></p>
+                        <p><strong>Pin: </strong><span id="selectedPin"></span></p>
+                        <p><strong>Email: </strong><span id="selectedEmail"></span></p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="viewUserBtn" class="btn btn-primary">View User Orders</a>
         </div>
-        <div class="col-12  col-lg-2 d-flex flex-column text-start border-start border-dark align-items-center">
-            <p class="w-100"><strong>Order ID: </strong><span class="text-nowrap">{{$current_order->id}}</span></p>
-            <p class="w-100"><strong>Available for Pickup: </strong><span class="text-nowrap">{{$current_order->available_date}}</span></p>
-            <p class="w-100"><strong>Due Date: </strong><span class="text-nowrap">{{$current_order->due_date}}</span></p>
-            <p class="w-100"><strong>Fees: </strong><span class="text-nowrap">${{$current_order->total_fees_due}}</span></p>
-            @if(($current_order->total_fees_due) > 0)
-            <a href="/admin/fees/manage/{{$current_order->id}}" class="btn btn-danger">Collect Fees</a>
-            @else
-            {!! Form::open(['action' => ['App\Http\Controllers\OrdersController@update', $current_order->id], 'files' => false, 'method' => 'POST', 'class' => 'my-auto']) !!}
-                @method('PUT')
-                {{ Form::submit('Check In', ['class'=>'btn btn-success'])}}
-            {!! Form::close() !!}
-            @endif
-        </div>
+
+        <script>
+                const selectedUser = $('#selectedUser');
+                const selectedName = $('#selectedName');
+                const selectedPin = $('#selectedPin');
+                const selectedEmail = $('#selectedEmail');
+                const viewUserBtn = $('#viewUserBtn');
+
+                $(document).on('click', function(event) {
+                    var target = $(event.target);
+
+                    var parentElemClasses = target.parent().attr('class').split(' ');
+
+                    if(target.is('option') && parentElemClasses.indexOf('userQuery') === 1) {
+                        var value = target.val();
+                        $.ajax({
+                        url: '/admin/users/search/get',
+                        method: 'GET',
+                        data: { user_id: value },
+                        success: function(response) {
+                            var user = response;
+                            
+                            selectedName.text(user.name);
+                            selectedPin.text(user.pin);
+                            selectedEmail.text(user.email);
+                            let link = '/admin/orders/user/' + user.id;
+                            viewUserBtn.attr('href', link);
+                            
+                            selectedUser.show();
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                    });
+                    }
+                });
+        </script>
+
+        <script>
+            function toggleDropdown(inputId, dropdownId, searchUrl) {
+                var input = $('#' + inputId);
+                var dropdown = $('#' + dropdownId);
+                
+                $(document).on('click', function(event) {
+                    var target = $(event.target);
+                    
+                    if (!target.closest(dropdown).length && !target.is(input)) {
+                        dropdown.hide();
+                    } else {
+                        dropdown.show();
+                    }
+                });
+                
+                input.on('input', function(event) {
+                    var searchTerm = event.target.value;
+                    
+                    $.ajax({
+                        url: searchUrl,
+                        method: 'GET',
+                        data: { searchTerm: searchTerm },
+                        success: function(response) {
+                            var users = response;
+                            
+                            dropdown.empty();
+                            
+                            dropdown.append($('<option>').addClass('mb-2 fw-bold').text('Select a user').attr('disabled', 'disabled').val('none'));
+                            
+                            users.forEach(function(user) {
+                                let userInfo = user.pin + " | " + user.name + " | " +  user.email;
+                                dropdown.append($('<option>').addClass('mb-2').html(userInfo).val(user.id));
+                            });
+                            
+                            dropdown.show();
+                        },
+                        error: function(error) {
+                            console.error(error);
+                        }
+                    });
+                });
+            }
+            
+            // Call the initializeDropdown function for each dropdown you want to initialize
+            toggleDropdown('pin_search', 'userPinSearchDropdown', '/admin/users/search/pin');
+            toggleDropdown('name_search', 'userNameSearchDropdown', '/admin/users/search/name');
+            toggleDropdown('email_search', 'userEmailSearchDropdown', '/admin/users/search/email');
+            toggleDropdown('order_id_search', 'orderIdSearchDropdown', '/admin/orders/search/id');
+        </script>
     </div>
-    @endforeach
-    @else
-    <div class="row">
-        <div class="col text-center">
-            <h3 class="mb-3">You have no active orders</h3>
-            <a href="/catalog"><u>View Our Full Catalog Here</u></a>
-        </div>
     </div>
-    @endif
 </div>
-
-
 
 @endsection

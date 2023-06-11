@@ -3,26 +3,20 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center mb-5">
-        <div class="col text-center">
-            <h1>Fees</h1>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row d-flex justify-content-evenly gap-5 p-3 mb-5" >
+    <div class="row d-flex justify-content-evenly gap-5 p-3 my-5" >
         <div class="col-12 col-lg-5 p-3 shadow border border-dark" style="background-color: var(--ivory);">
             <h1 class="text-center mb-5">Order # {{$order->id}}</h1>
             <div class="container">
-                <div class="row mb-3">
-                    <div class="col">
-                        <img src="/images/books/{{$order->book->book_img}}" width="150" alt="" class="m-auto">
+                <div class="row d-flex gap-3 mb-3">
+                    <div class="col-12 d-flex justify-content-center">
+                        <img src="/images/books/{{$order->book->book_img}}" width="125" alt="" class="mb-3">
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-lg-4">
                         <p class="w-100"><strong>Title:</strong><br> {{$order->book->title}}</p>
                         <p class="w-100"><strong>Author:</strong><br> {{$order->book->author}}</p>
                         <p class="w-100"><strong>ISBN:</strong><br> {{$order->book->ISBN}}</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
                         <p class="w-100"><strong>Days Overdue: </strong><span class="text-nowrap">{{$order->days_overdue}}</span></p>
                         <p class="w-100"><strong>Fees: </strong><span class="text-nowrap">${{$order->total_fees_due}}</span></p>
                     </div>

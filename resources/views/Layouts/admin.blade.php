@@ -37,15 +37,15 @@
 
     
 
-    <main class="">
+    <main class="container-fluid p-0" style="width: 100vw; overflow-x: hidden;">
         @include('inc.messages')
         
         <div class="container-fluid" style="padding: 0; min-height: calc(100vh - 40px)">
-            <div class="row flex-nowrap h-100" style="min-height: calc(100vh - 40px)">
-                <nav class="col-auto bg-dark text-white border" style="border-color: #FFFFFF;">
+            <div class="row d-flex flex-nowrap h-100 w-100 m-0" style="min-height: calc(100vh - 40px)">
+                <nav class="col-auto p-0 bg-dark text-white border-top border-bottom" style="border-color: #FFFFFF;">
                     @include('inc.admin.nav')
                 </nav>
-                <div class="col p-3">
+                <div class="col">
                     @yield('content')
                 </div>
             </div>

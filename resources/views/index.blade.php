@@ -7,8 +7,11 @@
     <h1 class="pt-5 fw-bold display-1" style="color:var(--burgandy);">Inkwell Library</h1>
     <h3><strong>Where knowledge, education, and entertainment know no bounds</strong></h3>
     <br>
+    @if(!Auth::user())
     <a href="#membership-details" class="btn bg-image btn-primary">Become a Member Today</a>
-
+    @else
+    <a href="/profile/home" class="btn bg-image btn-primary">View Your Profile</a>
+    @endif
     <img src="/images/hero-books.png" alt="" class="position-absolute bottom-0 start-0 h-50 w-100">
     <a href="#summerFavorites"><i id="hero-arrow-down" class="bi bi-arrow-down fw-bold display-1 floating"></i></a>
 </section>
@@ -27,7 +30,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">{{$favorite_book->title}}</h5>
                     <p class="card-text">{{$favorite_book->author}}</p>
-                    <a href="/catalog" class="btn btn-primary">View Book</a>
+                    <a href="/catalog/view/{{$favorite_book->id}}" class="btn btn-primary">View Book</a>
                 </div>
             </div>
         </div>
@@ -65,7 +68,8 @@
                                 captivating mysteries!</p>
                         </div>
                     </div>
-                  <a href="#" class="btn btn-primary">View Event Details</a>
+                    <!--TODO: add dynamic id to link-->
+                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
                 </div>
             </div>
         </div>
@@ -79,7 +83,8 @@
                             <p class="card-text">Discover the art of creative writing in this immersive workshop designed to spark your imagination and develop your storytelling skills. Learn the fundamentals of crafting compelling characters, building vibrant settings, and creating captivating narratives. Whether you're a novice writer or looking to enhance your existing skills, this workshop will ignite your creativity and set you on a path of literary exploration.</p>
                         </div>
                     </div>
-                  <a href="#" class="btn btn-primary">View Event Details</a>
+                  <!--TODO: add dynamic id to link-->
+                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
                 </div>
               </div>
         </div>
@@ -93,7 +98,8 @@
                             <p class="card-text">Embark on a literary voyage with fellow bookworms as we delve into captivating stories and engage in thought-provoking discussions. This month, we explore an acclaimed contemporary novel that challenges societal norms and sparks meaningful dialogue. Share your insights, exchange perspectives, and connect with fellow book enthusiasts in a welcoming and intellectually stimulating environment.</p>
                         </div>
                     </div>
-                  <a href="#" class="btn btn-primary">View Event Details</a>
+                  <!--TODO: add dynamic id to link-->
+                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
                 </div>
               </div>
         </div>
@@ -101,7 +107,7 @@
 
     <div class="row my-5">
         <div class="col">
-            <a href="#" class="btn btn-primary">View All Events</a>
+            <a href="/events" class="btn btn-primary">View All Events</a>
         </div>
     </div>
 </section>
@@ -117,7 +123,8 @@
             <h2 class="text-center mb-3">Dive into Adventure: Join our Summer Reading Program!</h2>
             <p class="truncate-text-4">Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
             <div class="text-center">
-                <button class="btn btn-primary">Learn More</button>
+                <!--TODO: add dynamic id to link-->
+                <a href="/events/view/{id}" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>
@@ -130,7 +137,8 @@
             <h2 class="text-center mb-3">Dive into Adventure: Join our Summer Reading Program!</h2>
             <p class="truncate-text-4">Embark on a thrilling literary journey this summer with our exciting Summer Reading Program! Immerse yourself in captivating stories, explore new worlds, and let your imagination soar. Whether you're a bookworm, an avid reader, or looking to discover the joy of reading, this program is designed for all ages and promises endless adventure. Dive into a sea of books, earn badges, participate in engaging activities, and unlock surprises along the way. Join us as we celebrate the magic of reading and make this summer a season filled with inspiration, knowledge, and unforgettable tales. Sign up today and let the adventure begin!</p>
             <div class="text-center">
-                <button class="btn btn-primary">Learn More</button>
+                <!--TODO: add dynamic id to link-->
+                <a href="/events/view/{id}" class="btn btn-primary">Learn More</a>
             </div>
         </div>
         <div class="position-absolute bg-success w-75 h-75 bottom-0 start-0" style="padding:0;">

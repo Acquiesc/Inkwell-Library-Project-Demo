@@ -125,4 +125,13 @@ class OrdersController extends Controller
     {
         //
     }
+
+    public function searchID(Request $request)
+    {
+        $id = $request->query('searchTerm');
+
+        $orders = Order::where('id', 'like', $id . '%')->limit(10)->get();
+
+        return response()->json($orders);
+    }
 }
