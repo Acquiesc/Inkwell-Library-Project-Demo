@@ -37,7 +37,7 @@
 
     
 
-    <main class="">
+    <main class="container-fluid p-0" style="width: 100vw; overflow-x: hidden;">
         @include('inc.messages')
         
         @yield('content')

@@ -54,55 +54,23 @@
 
     <!--Event Cards-->
     <div class="row mt-5 mx-auto gap-5 d-flex justify-content-center" style="max-width: 75rem">
+        @foreach($events as $event)
         <div class="col d-flex justify-content-center mb-3">
             <div class="card h-100" style="width: 18rem;">
-                <img src="/images/mystery-event.jpg" class="card-img-top" alt="...">
+                <img src="/images/events/{{$event->img}}" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div class="mb-5">
-                        <h5 class="card-title"><strong>Unveiling the Enigma: An Evening with Renowned Mystery Authors</strong></h5>
+                        <h5 class="card-title"><strong>{{$event->title}}</strong></h5>
                         <div class="truncate-text-4">
-                            <p class="card-text">Join us for an engaging evening with renowned mystery 
-                                authors as they discuss their craft, share behind-the-scenes insights, 
-                                and reveal the secrets to crafting gripping suspense and intriguing plot 
-                                twists. Don't miss this opportunity to meet the masterminds behind 
-                                captivating mysteries!</p>
+                            <p class="card-text">{{$event->summary}}</p>
                         </div>
                     </div>
                     <!--TODO: add dynamic id to link-->
-                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
+                  <a href="/events/view/{{$event->id}}" class="btn btn-primary">View Event Details</a>
                 </div>
             </div>
         </div>
-        <div class="col d-flex justify-content-center mb-3">
-            <div class="card h-100" style="width: 18rem;">
-                <img src="/images/creative-writing-event.jpg" class="card-img-top" alt="...">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div class="mb-5">
-                        <h5 class="card-title"><strong>Ignite Your Creativity: A Workshop on the Art of Creative Writing</strong></h5>
-                        <div class="truncate-text-4">
-                            <p class="card-text">Discover the art of creative writing in this immersive workshop designed to spark your imagination and develop your storytelling skills. Learn the fundamentals of crafting compelling characters, building vibrant settings, and creating captivating narratives. Whether you're a novice writer or looking to enhance your existing skills, this workshop will ignite your creativity and set you on a path of literary exploration.</p>
-                        </div>
-                    </div>
-                  <!--TODO: add dynamic id to link-->
-                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
-                </div>
-              </div>
-        </div>
-        <div class="col d-flex justify-content-center mb-3">
-            <div class="card h-100" style="width: 18rem;">
-                <img src="/images/book-club-event.jpg" class="card-img-top" alt="...">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div class="mb-5">
-                        <h5 class="card-title"><strong>Literary Voyage: Book Club Meeting for Bookworms</strong></h5>
-                        <div class="truncate-text-4">
-                            <p class="card-text">Embark on a literary voyage with fellow bookworms as we delve into captivating stories and engage in thought-provoking discussions. This month, we explore an acclaimed contemporary novel that challenges societal norms and sparks meaningful dialogue. Share your insights, exchange perspectives, and connect with fellow book enthusiasts in a welcoming and intellectually stimulating environment.</p>
-                        </div>
-                    </div>
-                  <!--TODO: add dynamic id to link-->
-                  <a href="/events/view/{id}" class="btn btn-primary">View Event Details</a>
-                </div>
-              </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="row my-5">

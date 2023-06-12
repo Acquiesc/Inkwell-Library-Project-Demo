@@ -10,7 +10,7 @@
         </li>
         <li class = "mb-3">
             <a href="/admin/orders" class="px-0 align-middle text-white">
-                <i class="fs-4 bi-journal-arrow-down"></i> <span class="ms-1 d-none d-sm-inline">Check In</span></a>
+                <i class="fs-4 bi-journal-arrow-down"></i> <span class="ms-1 d-none d-sm-inline">Manage Orders</span></a>
         </li>
         <li class = "mb-3">
             <a href="/admin/catalog" class="px-0 align-middle text-white">
@@ -21,18 +21,13 @@
                 <i class="fs-4 bi-journal-arrow-up"></i> <span class="ms-1 d-none d-sm-inline">New Book</span></a>
         </li>
         <li class = "mb-3">
-            <a href="/admin/orders/history" class="px-0 align-middle text-white">
-                <i class="fs-4 bi bi-box-seam"></i> <span class="ms-1 d-none d-sm-inline">Manage Orders</span></a>
-        </li>
-        <li class = "mb-3">
-            <a href="/admin/orders/events" class="px-0 align-middle text-white">
+            <a href="/admin/events" class="px-0 align-middle text-white">
                 <i class="fs-4 bi bi-calendar-event"></i> <span class="ms-1 d-none d-sm-inline">Manage Events</span></a>
         </li>
-        <!--
         <li class = "mb-3">
-            <a href="/admin/fees" class="px-0 align-middle text-white">
-                <i class="fs-4 bi-cash-coin"></i> <span class="ms-1 d-none d-sm-inline">Manage Fees</span></a>
+            <a href="/admin/events/create" class="px-0 align-middle text-white">
+                <i class="fs-4 bi bi-calendar-plus"></i> <span class="ms-1 d-none d-sm-inline">New Event</span></a>
         </li>
-         -->
+        
     </ul>
 </div>

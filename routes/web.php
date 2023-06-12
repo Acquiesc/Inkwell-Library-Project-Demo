@@ -11,6 +11,7 @@ use App\Models\Book;
 use App\Models\FeePaymentLog;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,10 @@ Route::get('/', function () {
 
 Route::get('/home', function() {
     $favorite_books = Book::latest()->limit(5)->get();
+    
+    $events = Event::orderBy('date')->limit(3)->get();
 
-    return view('index')->with('favorite_books', $favorite_books);
+    return view('index')->with(['favorite_books' => $favorite_books, 'events' => $events]);
 });
 
 Route::get('/catalog', 'App\Http\Controllers\BooksController@index');
@@ -42,8 +45,14 @@ Route::get('/catalog/search/author', 'App\Http\Controllers\BooksController@searc
 Route::get('/catalog/search/ISBN', 'App\Http\Controllers\BooksController@searchISBN');
 
 Route::get('/events', function() {
-    return view('events');
+    $upcoming_events = Event::orderBy('date')->limit(3)->get();
+
+    $events = Event::orderBy('date')->get();
+
+    return view('events')->with(['events' => $events, 'upcoming_events' => $upcoming_events]);
 });
+
+Route::get('/events/view/{id}', 'App\Http\Controllers\EventsController@show');
 
 Route::prefix('/profile')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', function() {
@@ -126,9 +135,9 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
     Route::get('/users/search/pin', 'App\Http\Controllers\UsersController@searchPin');
     Route::get('/users/search/name', 'App\Http\Controllers\UsersController@searchName');
     Route::get('/users/search/email', 'App\Http\Controllers\UsersController@searchEmail');
+    
     Route::get('/users/search/get', 'App\Http\Controllers\UsersController@queryUser');
-    Route::get('/orders/search/id', 'App\Http\Controllers\OrdersController@searchID');
-
+    
     Route::get('/orders/user/{id}', 'App\Http\Controllers\UsersController@manageUser');
 
 
@@ -160,6 +169,11 @@ Route::prefix('/admin')->middleware(['auth', 'verified', 'admin'])->group(functi
         return view('admin.create-book');
     });
     Route::post('/catalog/new/store', 'App\Http\Controllers\BooksController@store');
+
+    Route::get('/events', 'App\Http\Controllers\EventsController@index');
+    Route::get('/events/create', 'App\Http\Controllers\EventsController@createEvent');
+
+    Route::post('/events/create/store', 'App\Http\Controllers\EventsController@store');
 
 });
 
